@@ -1,0 +1,61 @@
+PART 2: TROUBLESHOOTING & EMERGENCY FIXES 
+
+1. PROBLEM: The "Oops, wrong file" Problem
+   • Scenario: Sensitive database password configurations (.env) were staged via 'git add .' and must not reach the shared tracking history.
+   • Syntax:   git restore --staged <target-file-path>
+   • Command:  git restore --staged .env
+
+2. PROBLEM: The "Typo in the message" Problem
+   • Scenario: The last commit contains a spelling error ("authnetication"), but the changes have not yet been synchronized with the remote branch.
+   • Syntax:   git commit --amend -m "<corrected-message>"
+   • Command:  git commit --amend -m "Fixed authentication typo"
+
+3. PROBLEM: The "Forgot a file" Problem
+   • Scenario: An urgent asset modification (styles.css) was left out of your last snapshot and must join the exact same tree entry.
+   • Syntax:   
+     1. git add <forgotten-file-path>
+     2. git commit --amend --no-edit
+   • Command:  
+     1. git add styles.css
+     2. git commit --amend --no-edit
+
+4. PROBLEM: The "I hate these changes" Problem
+   • Scenario: Uncommitted experimentation inside index.html has corrupted its functionality. You need to roll it back entirely to its state at the last commit.
+   • Syntax:   git restore <target-file-path>
+   • Command:  git restore index.html
+
+5. PROBLEM: The "Wrong Branch" Problem
+   • Scenario: You committed a new sequence (3 commits) directly to the main timeline tracking branch by accident instead of inside a feature path.
+   • Syntax:   
+     1. git branch <intended-feature-branch-name>
+     2. git reset HEAD~<number-of-commits> --hard
+     3. git checkout <intended-feature-branch-name>
+   • Command:  
+     1. git branch new-feature
+     2. git reset HEAD~3 --hard
+     3. git checkout new-feature
+  
+6. PROBLEM: The "Detached HEAD" Problem
+   • Scenario: Navigating historic code states via hash paths leaves newly generated investigative changes floating outside normal system tracking branches.
+   • Syntax:   git switch -c <new-recovery-branch-name>
+   • Command:  git switch -c recovery-branch
+
+7. PROBLEM: The "Undo a pushed mistake" Problem
+   • Scenario: A production bug was written and sent to the public GitHub server. Because teammates share the codebase, history must not be wiped using resets.
+   • Syntax:   git revert <target-commit-hash-id>
+   • Command:  git revert <buggy-commit-hash>
+
+8. PROBLEM: The "Accidental Deletion" Problem
+   • Scenario: A local tracking line containing unmerged project work was deleted by mistake using standard git branch cleanup switches.
+   • Syntax:   git branch <restored-branch-name> <last-known-commit-hash-id>
+   • Command:  git branch feature-x <commit-hash>
+
+9. PROBLEM: The "Ghost Files" Problem
+   • Scenario: Assets were removed from disk via standard operating system file explorers instead of the Git CLI, leaving them flagged as deleted but unindexed.
+   • Syntax:   git add -u
+   • Command:  git add -u
+
+10. PROBLEM: The "Pushed to the void" Problem
+    • Scenario: A garbage tracking line ('testing-junk') was published to the upstream remote environment and must be wiped out to keep the collaborative server clean.
+    • Syntax:   git push <remote-alias> --delete <remote-target-branch-name>
+    • Command:  git push origin --delete testing-junk
